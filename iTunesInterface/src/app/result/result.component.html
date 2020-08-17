@@ -1,0 +1,30 @@
+<div class="resultView">
+    <div class="resultTitle">
+        <div class="resultInfo">
+            <div class="pic">
+                <img src="{{item.artworkUrl100}}" alt="Result Artwork">
+            </div>
+            <div class="info">
+                <h2>{{item.trackName}}</h2>
+                <h3>{{item.collectionName}}</h3>
+                <p>{{item.artistName}}</p>
+            </div>
+            <div class="resultDetails">
+                <!-- <p *ngIf="item.wrapperType == 'track'">
+                    {{item.kind}}
+                </p>
+                <p *ngIf="item.wrapperType == 'audiobook'">
+                    {{item.wrapperType}}
+                </p> -->
+                <div *ngIf="item.previewUrl">
+                    <audio *ngIf="item.kind !== 'feature-movie'" controls src="{{item.previewUrl}}" type="audio"></audio>
+
+                    <video  *ngIf="item.kind == 'feature-movie'" height="100px" controls src="{{item.previewUrl}}" type="video"></video>
+                </div>
+                <br>
+                <a href="{{item.collectionViewUrl}}">See in store</a>
+
+            </div>
+        </div>
+    </div>
+</div>

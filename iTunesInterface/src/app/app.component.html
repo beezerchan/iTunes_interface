@@ -1,0 +1,29 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+</head>
+
+<body>
+  <div class="main">
+    <div class="search">
+      <input [(ngModel)]="searchTerm" (keyup.enter)="searchForTerm()" type="text">
+      <button (click)='searchForTerm()'>Search</button>
+      <button (click)='clearSearch()'>Clear</button>
+      <!-- <button (click)='showresults()'>show Results</button> -->
+    </div>
+    <div class="results" *ngIf="currentResults">
+      <h3>results</h3>
+      <app-result *ngFor="let result of currentResults" [item]=result ></app-result>
+      <div class="pagControl">
+        <button [disabled]="currentPage == 0" (click)="prevResults()">prev</button>
+        <p> showing results {{firstResult}} to {{lastResult}} of {{searchResults.length}}</p>
+        <button [disabled]="currentPage == lastPage" (click)="nextResults()">next</button>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
